@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name           小说下载器-gh
+// @name           novel-downloader-gh
 // @name:en        novel-downloader
 // @name:ja        小説ダウンローダー
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.921
+// @version        5.2.922
 // @author         bgme
 // @supportURL     https://github.com/404-novel-project/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -339,6 +339,7 @@
 // @homepageURL    https://github.com/404-novel-project/novel-downloader
 // @icon           https://cdn.jsdelivr.net/gh/404-novel-project/novel-downloader/assets/icon.png
 // @incompatible   Internet Explorer
+// @inject-into    page
 // @license        AGPL-3.0-or-later
 // @namespace      https://blog.bgme.me
 // @noframes
