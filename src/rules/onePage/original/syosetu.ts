@@ -99,7 +99,7 @@ export const syosetu = () => {
     ).innerText.trim(),
     author: (
       document.querySelector(
-        ".novel_writername > a, .novel_writername, p-novel__author > a"
+        "div.p-novel__author > a "
       ) as HTMLAnchorElement
     ).innerText
       .replace("作者：", "")
