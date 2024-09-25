@@ -72,7 +72,7 @@ export const syosetu = () => {
   };
   const getAList = () => {
     const _aList = document.querySelectorAll(
-      "dl.novel_sublist2 dd.subtitle > a"
+      "dl.novel_sublist2 dd.subtitle > a, div.p-eplist > div.p-eplist__sublist > a"
     );
     if (_aList.length !== 0) {
       return _aList;
@@ -80,8 +80,9 @@ export const syosetu = () => {
       const a = document.createElement("a");
       a.href = document.location.href;
       a.innerText = (
-        document.querySelector(".novel_title") as HTMLElement
+        document.querySelector(".novel_title, .p-novel__title") as HTMLElement
       )?.innerText;
+      console.log([a]);
       return [a];
     }
   };
@@ -94,11 +95,11 @@ export const syosetu = () => {
   return mkRuleClass({
     bookUrl: document.location.href,
     bookname: (
-      document.querySelector(".novel_title") as HTMLElement
+      document.querySelector(".novel_title, .p-novel__title") as HTMLElement
     ).innerText.trim(),
     author: (
       document.querySelector(
-        ".novel_writername > a, .novel_writername"
+        ".novel_writername > a, .novel_writername, p-novel__author > a"
       ) as HTMLAnchorElement
     ).innerText
       .replace("作者：", "")
@@ -111,9 +112,9 @@ export const syosetu = () => {
     getSName: (dom) => (dom as HTMLElement).innerText.trim(),
     getContent: (dom) => {
       const content = document.createElement("div");
-      const novelP = dom.querySelector("#novel_p");
-      const novelHonbun = dom.querySelector("#novel_honbun");
-      const novelA = dom.querySelector("#novel_a");
+      const novelP = dom.querySelector("#novel_p, p-novel, main > article > h1");
+      const novelHonbun = dom.querySelector("#novel_honbun, div.p-novel__body > div:nth-child(1)");
+      const novelA = dom.querySelector("#novel_a, .p-novel__text--afterword");
       if (novelP) {
         content.appendChild(novelP);
         const hr = dom.createElement("hr");
