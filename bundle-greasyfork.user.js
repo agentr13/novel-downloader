@@ -5,7 +5,7 @@
 // @description    一个可扩展的通用型小说下载器。
 // @description:en An scalable universal novel downloader.
 // @description:ja スケーラブルなユニバーサル小説ダウンローダー。
-// @version        5.2.917
+// @version        5.2.918
 // @author         bgme
 // @supportURL     https://github.com/404-novel-project/novel-downloader
 // @exclude        *://www.jjwxc.net/onebook.php?novelid=*&chapterid=*
@@ -12992,14 +12992,15 @@ const syosetu = () => {
         return document.querySelector("#novel_ex");
     };
     const getAList = () => {
-        const _aList = document.querySelectorAll("dl.novel_sublist2 dd.subtitle > a");
+        const _aList = document.querySelectorAll("dl.novel_sublist2 dd.subtitle > a, div.p-eplist > div.p-eplist__sublist > a");
         if (_aList.length !== 0) {
             return _aList;
         }
         else {
             const a = document.createElement("a");
             a.href = document.location.href;
-            a.innerText = document.querySelector(".novel_title")?.innerText;
+            a.innerText = document.querySelector(".novel_title, .p-novel__title")?.innerText;
+            console.log([a]);
             return [a];
         }
     };
@@ -13009,8 +13010,8 @@ const syosetu = () => {
     };
     return (0,_template__WEBPACK_IMPORTED_MODULE_0__/* .mkRuleClass */ .N)({
         bookUrl: document.location.href,
-        bookname: document.querySelector(".novel_title").innerText.trim(),
-        author: document.querySelector(".novel_writername > a, .novel_writername").innerText
+        bookname: document.querySelector(".novel_title, .p-novel__title").innerText.trim(),
+        author: document.querySelector(".novel_writername > a, .novel_writername, p-novel__author > a").innerText
             .replace("作者：", "")
             .trim(),
         introDom: getIntroDom(),
@@ -13021,9 +13022,9 @@ const syosetu = () => {
         getSName: (dom) => dom.innerText.trim(),
         getContent: (dom) => {
             const content = document.createElement("div");
-            const novelP = dom.querySelector("#novel_p");
-            const novelHonbun = dom.querySelector("#novel_honbun");
-            const novelA = dom.querySelector("#novel_a");
+            const novelP = dom.querySelector("#novel_p, p-novel, main > article > h1");
+            const novelHonbun = dom.querySelector("#novel_honbun, div.p-novel__body > div:nth-child(1)");
+            const novelA = dom.querySelector("#novel_a, .p-novel__text--afterword");
             if (novelP) {
                 content.appendChild(novelP);
                 const hr = dom.createElement("hr");
