@@ -1,5 +1,5 @@
 {
-  "name": "小说下载器-gh",
+  "name": "novel-downloader-gh",
   "name:en": "novel-downloader",
   "name:ja": "小説ダウンローダー",
   "author": "bgme",
@@ -20,6 +20,7 @@
     "Opera 71+",
     "Safari 13.1+"
   ],
+  "inject-into": "page",
   "incompatible": ["Internet Explorer"],
   "match": [
     "*://book.sfacg.com/Novel/*/MainIndex/",
